@@ -12,9 +12,17 @@ Only authorized hosts (h1, h2) can communicate. Unauthorized hosts (h3) are bloc
 - Python3
 
 ## Network Topology
-h1 (10.0.0.1) ─┐
-h2 (10.0.0.2) ─┤── Switch s1 ── POX Controller
-h3 (10.0.0.3) ─┘
+## Network Topology
+The network consists of 3 hosts connected to a single switch,
+which is controlled by the POX SDN Controller.
+
+- h1 (10.0.0.1) → connected to Switch s1 (Port 1) → AUTHORIZED
+- h2 (10.0.0.2) → connected to Switch s1 (Port 2) → AUTHORIZED  
+- h3 (10.0.0.3) → connected to Switch s1 (Port 3) → UNAUTHORIZED
+- Switch s1 → connected to POX Controller (c0)
+
+All traffic passes through Switch s1.
+POX Controller decides which hosts can communicate.
 
 ## How to Run
 1. Start POX Controller:
@@ -35,10 +43,11 @@ h3 (10.0.0.3) ─┘
    mininet> h3 ping -c 3 h1
 
 ### Test 4 - Regression Test
-   mininet> h1 ping -c 3 h2
-   mininet> h2 ping -c 3 h1
-   mininet> h3 ping -c 3 h2
-   mininet> h3 ping -c 3 h1
+   mininet> h1 ping -c 3 h2  
+   mininet> h2 ping -c 3 h1  
+   mininet> h3 ping -c 3 h2  
+   mininet> h3 ping -c 3 h1  
+   
 ## Results
 | Test | Expected | Result |
 |------|----------|--------|
