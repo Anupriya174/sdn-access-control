@@ -11,7 +11,7 @@ Only authorized hosts (h1, h2) can communicate. Unauthorized hosts (h3) are bloc
 - Wireshark
 - Python3
 
-## Network Topology
+
 ## Network Topology
 The network consists of 3 hosts connected to a single switch,
 which is controlled by the POX SDN Controller.
